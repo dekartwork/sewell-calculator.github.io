@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <title>SEWELL Calculator</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <img class="bgimg _ibg" src="/img/bg-img.jpg" alt="" />
+            <div class="body">
+                <div class="body__substrate-title">
+                    <div class="body__title">SEWELL</div>
+                    <div class="body__subtitle">калькулятор свердловини</div>
+                </div>
+                <form id="form" method="get" action="/result.html">
+                    <div class="choice-district">
+                        <div class="choice-district__title _title-block">
+                            Оберіть район та населений пункт області
+                        </div>
+                        <div class="choice-district__select-body">
+                            <select
+                                name="select-district"
+                                id="select-district"
+                                class="choice-district__select-district"
+                            >
+                                <option
+                                    class="select-district__option"
+                                    selected
+                                >
+                                    Оберіть район
+                                </option>
+                                <option class="select-district__option">
+                                    Білоцерковський
+                                </option>
+                                <option class="select-district__option">
+                                    Бориспільский
+                                </option>
+                                <option class="select-district__option">
+                                    Броварский
+                                </option>
+                                <option class="select-district__option">
+                                    Бучанський
+                                </option>
+                                <option class="select-district__option">
+                                    Вишгородский
+                                </option>
+                                <option class="select-district__option">
+                                    Обухівський
+                                </option>
+                                <option class="select-district__option">
+                                    Фастівський
+                                </option>
+                            </select>
+                        </div>
+                        <div class="choice-district__input-body">
+                            <input
+                                type="text"
+                                onkeyup="openButton()"
+                                required
+                                id="input-city"
+                                value=""
+                                class="choice-district__input-city _input1"
+                                placeholder="* Введіть населений пункт..."
+                            />
+                        </div>
+                    </div>
+                    <div class="type-well">
+                        <div class="type-well__title _title-block">
+                            Оберіть тип свердловини
+                        </div>
+                        <input
+                            type="radio"
+                            id="type__input1"
+                            class="type-well__input _input"
+                            name="typewell"
+                            value="В одну колону"
+                        />
+                        <label
+                            for="type__input1"
+                            class="type-input__label _label"
+                            id="type-input__label1"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>Свердловина в одну колону</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="type__input2"
+                            class="type-well__input _input"
+                            name="typewell"
+                            value="В дві колони"
+                        />
+                        <label
+                            for="type__input2"
+                            class="type-input__label _label"
+                            id="type-input__label2"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>Свердловина в дві колони</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="type__input3"
+                            class="type-well__input _input"
+                            name="typewell"
+                            value="В три та більше колон"
+                        />
+                        <label
+                            for="type__input3"
+                            class="type-input__label _label"
+                            id="type-input__label3"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>Свердловина в три та більше колон</p>
+                        </label>
+                    </div>
+                    <div class="type-burmash">
+                        <div class="type-burmash__title _title-block">
+                            Оберіть тип бурової установки
+                        </div>
+                        <input
+                            type="radio"
+                            id="type-burmash1"
+                            class="type-burmash__input _input"
+                            name="type-burmash__input"
+                            value="УРБ 2.5 на базі КАМАЗ"
+                        />
+                        <label
+                            for="type-burmash1"
+                            class="type-input__label _label"
+                            id="type-burmash__label1"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>УРБ 2.5 на базі камаз</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="type-burmash2"
+                            class="type-burmash__input _input"
+                            name="type-burmash__input"
+                            value="МГБУ-2 малогабаритна"
+                        />
+                        <label
+                            for="type-burmash2"
+                            class="type-input__label _label"
+                            id="type-burmash__label2"
+                        >
+                            <div
+                                class="type-lebel__circle"
+                                id="circle-burmash2"
+                            ></div>
+                            <p>МГБУ-2 - малогабаритна установка</p>
+                        </label>
+                    </div>
+                    <div class="depth-volume">
+                        <div class="depth-volume__title _title-block">
+                            Глибина та необхідний об’єм води
+                        </div>
+                        <input
+                            type="number"
+                            id="depth-volume"
+                            class="depth-volume__input _input1"
+                            placeholder="Введіть глибину в метрах, якщо відома..."
+                        />
+                        <input
+                            type="radio"
+                            id="depth-volume1"
+                            value="До 3 кубометрів на годину"
+                            class="volume__input _input"
+                            name="depth-volume__input"
+                        />
+                        <label
+                            for="depth-volume1"
+                            class="type-input__label _label"
+                            id="depth-volume__label1"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>До 3 m³ на годину</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="depth-volume2"
+                            value="До 5 кубометрів на годину"
+                            class="volume__input _input"
+                            name="depth-volume__input"
+                        />
+                        <label
+                            for="depth-volume2"
+                            class="type-input__label _label"
+                            id="depth-volume__label2"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>До 5 m³ на годину</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="depth-volume3"
+                            value="Більше 5 кубометрів на годину"
+                            class="volume__input _input"
+                            name="depth-volume__input"
+                        />
+                        <label
+                            for="depth-volume3"
+                            class="type-input__label _label"
+                            id="depth-volume__label3"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>Більше 5 m³ на годину</p>
+                        </label>
+                    </div>
+                    <div class="arrangement">
+                        <div class="arrangement__title _title-block">
+                            Потрібно облаштування свердловини?
+                        </div>
+                        <div class="arrangement__subtitle">
+                            Земельні роботи, монтаж кілець, монтаж насосного,
+                            аккумулюючого устаткування, та автоматики.
+                            Розрахунок є типовим.
+                        </div>
+                        <input
+                            type="radio"
+                            id="arrangement-input1"
+                            value="Потрібно на італійському устаткуванні"
+                            class="arrangement__input _input"
+                            name="arrangement__input"
+                        />
+                        <label
+                            for="arrangement-input1"
+                            class="type-input__label _label arrangement__label"
+                            id="arrangement__label1"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>На італійському устаткуванні</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="arrangement-input2"
+                            value="Потрібно на українському устаткуванні"
+                            class="arrangement__input _input"
+                            name="arrangement__input"
+                        />
+                        <label
+                            for="arrangement-input2"
+                            class="type-input__label _label"
+                            id="arrangement__label2"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>На українському устаткуванні</p>
+                        </label>
+                        <input
+                            type="radio"
+                            id="arrangement-input3"
+                            value="Ні, не потрібно облаштування свердловини"
+                            class="arrangement__input _input"
+                            name="arrangement__input"
+                        />
+                        <label
+                            for="arrangement-input3"
+                            class="type-input__label _label"
+                            id="arrangement__label3"
+                        >
+                            <div class="type-lebel__circle"></div>
+                            <p>Не потрібно облаштування</p>
+                        </label>
+                    </div>
+                    <div class="contacts">
+                        <div class="contacts__title _title-block">
+                            Ваші ім’я та телефон
+                        </div>
+                        <input
+                            type="text"
+                            onkeyup="openButton()"
+                            required
+                            id="user-name"
+                            class="contacts__input-name _input1"
+                            placeholder="* Ваше ім'я..."
+                        />
+                        <input
+                            type="tel"
+                            onkeyup="openButton()"
+                            required
+                            id="user-phone"
+                            class="contacts__input-phone _input1"
+                            placeholder="* Ваш телефон..."
+                        />
+                    </div>
+                    <div class="invalid-text" id="invalid-text">
+                        Заповніть усі поля із зірочкою *
+                    </div>
+                    <button
+                        type="submit"
+                        disabled="true"
+                        id="btnsubmit"
+                        class="btn__submit _btn"
+                    >
+                        Розрахувати свердловину
+                    </button>
+                    <!-- <div type="submit" id="btnsubmit" class="btn__submit _btn">Розрахувати свердловину</div> -->
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
